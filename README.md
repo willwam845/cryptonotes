@@ -1,2 +1,2 @@
-# cryptonotes
-it is for the cryptonotes
+# Initial page
+
