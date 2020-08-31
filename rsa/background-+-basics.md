@@ -64,7 +64,7 @@ So why is RSA reasonably secure? Well, this is because, if implemented properly,
 
 Of course, if RSA is implemented incorrectly, there are attacks you can do on it.
 
-## Summary:
+## Summary
 
 * RSA has a public key and a private key
 * The modulus is \(usually\) made up of 2 large prime numbers and is referred to as n, the exponent is referred to as e.

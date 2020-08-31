@@ -1,10 +1,8 @@
 ---
-description: >-
-  these don't really fall under any attacks but like they exist and i think they
-  are nifty
+description: 'haha, rsactftool cannot brrr now can it'
 ---
 
-# Other Interesting Things
+# Signing
 
 ## dp and dq?
 
@@ -76,20 +74,9 @@ print(long_to_bytes(pt))
 
 Sometimes, people will use null bytes to pad their message before encrypting it. This can be broken if the exponent is small enough.
 
-Let's look at a certain example:
-
 ```python
-from Crypto.Util.number import bytes_to_long
-from secret import flag
 
-def pad(msg):
-  return msg + (50-len(msg) * b"\x00")
-  
-n = [some value]
-e = 3
-
-msg = pad(flag)
-ct = pow(bytes_to_long(msg),e,n)
-print(ct)
 ```
+
+
 

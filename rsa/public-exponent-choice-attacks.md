@@ -6,7 +6,7 @@ description: lattices are fun
 
 again, just script go brrr attacks
 
-### Attacks on High E
+## Attacks on High E
 
 When the exponent is something very large, there are two main attacks we can use. One is the weiner attack, and the other is the Boneh-Durfee attack.
 
