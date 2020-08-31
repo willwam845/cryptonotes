@@ -43,7 +43,19 @@ print(long_to_bytes(m))
 
 Franklin Reiter's related message attack allows us to work out, given two messages encrypted with the same public key, and are linearly padded through a polynomial, usually of the form in CTF's as $$ax + b$$ , although it works with any polynomial.
 
-If we take the message as $$M$$ , the modulus as $$n$$ , $$e = 3$$ , our padding variables $$a_1,a_2,b_1, b_2$$ , and our ciphertexts $$c_1 , c_2$$, then$$c_i = (a_i * x + b_i)^{3} \mod n$$, which we can rearrange to form $$p_i(x) \equiv  (a_ix+b)^{3} - c_i$$. Since we have two of these, and they both share a root of $$x$$, therefore they share a factor of $$x - M$$, and so we can compute the GCD of them to recover $$M$$ 
+If we take the message as $$M$$ , the modulus as $$n$$ , $$e = 3$$ , our padding variables $$a_1,a_2,b_1, b_2$$ , and our ciphertexts $$c_1 , c_2$$, then:
+
+$$
+c_i = (a_i * x + b_i)^{3} \mod n
+$$
+
+which we can rearrange to form:
+
+$$
+p_i(x) \equiv  (a_ix+b)^{3} - c_i
+$$
+
+Since we have two of these, and they both share a root of $$x$$, therefore they share a factor of $$x - M$$, and so we can compute the GCD of them to recover $$M$$ 
 
 Implementation in Sage:
 
@@ -78,9 +90,23 @@ Let's take an example where they are padded with $$m = aM + b$$, and $$a$$ and $
 
 We start by taking the Chinese Remainder Theorem to compute a list of $$T_i$$ where:
 
-$$T_i \equiv 1 \mod n_i$$ and $$T_i \equiv 0 \mod{n_{j \neq i}}$$ 
+$$
+T_i \equiv 1 \mod n_i
+$$
 
-We then, for each $$T_i$$ , take the polynomial: $$g(x) = T_i * ((a_i * x + b_i)**5 - c$$ 
+and 
+
+
+
+$$
+T_i \equiv 0 \mod{n_{j \neq i}}
+$$
+
+We then, for each $$T_i$$ , take the polynomial:
+
+$$
+g(x) = T_i * ((a_i * x + b_i)**5 - c
+$$
 
 We then sum these polynomials, and note that for all $$n_i$$ ,  $$\sum g(x) \equiv 0 \mod n_i$$ 
 

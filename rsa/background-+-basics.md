@@ -20,13 +20,25 @@ RSA is a public-key cryptosystem, so there is a public key and a private key. Ou
 
 To encrypt a message,  a sender converts their message to an integer \(ensuring that it is less than n\), then they raise it to the power of e, and finally they take it mod n.
 
-In other words: $$c \equiv m^{e} \mod n $$ 
+In other words: 
 
-To decrypt the message, the knowledge of the two primes that make up n need to be known, in order to work out the Euler totient of n, which is calculated \(in the case of there being two unique primes\) by: $$\phi(n) = (p-1) * (q-1)$$ 
+$$
+c \equiv m^{e} \mod n
+$$
+
+To decrypt the message, the knowledge of the two primes that make up n need to be known, in order to work out the Euler totient of n, which is calculated \(in the case of there being two unique primes\) by:
+
+$$
+\phi(n) = (p-1) * (q-1)
+$$
 
 We then take the modular multiplicative inverse of e mod the totient we calculated.
 
-The modular multiplicative inverse is, in the finite field of integers from 1 to p, for every element g in that field, there exists a unique integer d, where $$g * d \equiv 1 \mod p$$ .
+The modular multiplicative inverse is, in the finite field of integers from 1 to p, for every element g in that field, there exists a unique integer d, where:
+
+$$
+g * d \equiv 1 \mod p
+$$
 
 We can work this out very easily in python with something like:
 
@@ -34,7 +46,11 @@ We can work this out very easily in python with something like:
 d = pow(g,-1,p)
 ```
 
-Finally, we take our encrypted message \(c or ct\), and take this to the power of our calculated d modulo n. In other words: $$pt = c^{d} \mod n $$.
+Finally, we take our encrypted message \(c or ct\), and take this to the power of our calculated d modulo n. In other words:
+
+$$
+pt = c^{d} \mod n
+$$
 
 Remember when I said there was a public key **and** and private key? Well, our private key is made up of n and d. There are ways to factor n given d, the easiest being letting other people's packages do all the work for you:
 
