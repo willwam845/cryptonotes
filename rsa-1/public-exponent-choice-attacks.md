@@ -2,25 +2,25 @@
 description: lattices are fun
 ---
 
-# Public Exponent Choice Attacks
+# High E attacks
 
-### e = 1
+again, just script go brrr attacks
 
-If e = 1, well, considering that $$n > c$$, and the message is encrypted by taking `pow(c,1,n)`, the mod will not be taken at all, meaning ct = pt.
+### Attacks on High E
 
-```python
-from Crypto.Util.number import long_to_bytes
+When the exponent is something very large, there are two main attacks we can use. One is the weiner attack, and the other is the Boneh-Durfee attack.
 
-n = [value]
-e = [value]
-c = [value]
+### Weiner
 
-print(long_to_bytes(c)) # c = pt
-```
+The weiner attack exists, tends to be quite reliable. [https://github.com/pwang00/Cryptographic-Attacks/blob/master/Public%20Key/RSA/wiener.sage](https://github.com/pwang00/Cryptographic-Attacks/blob/master/Public%20Key/RSA/wiener.sage) here's an implementation
 
-### High e attacks
+### Boneh-Durfee
 
-There are two main attacks that can be used when e is very large. One is the weiner attack, the other is the boneh-durfee attack.
+The Boneh-Durfee attack also exists, but it's pretty unreliable [https://github.com/deut-erium/WriteUps/blob/master/HSCTF/crypto/Chonky%20E/boneh\_durfee.sage](https://github.com/deut-erium/WriteUps/blob/master/HSCTF/crypto/Chonky%20E/boneh_durfee.sage) here's an implementation
+
+they both involve lattices and lattices are scary so uh yeah im not explaining them
+
+
 
 
 

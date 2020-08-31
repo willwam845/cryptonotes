@@ -4,6 +4,8 @@ description: factordb go brrrr
 
 # Factoring attacks on RSA
 
+This is really just a dump of some factoring methods, not really any mathsy attacks being used.
+
 ### Low N
 
 If the modulus N is very low \(128 bits or below takes a couple of seconds\), then the modulus can be easily factorised to get primes p and q, and then get d
