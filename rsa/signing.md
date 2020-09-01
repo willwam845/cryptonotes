@@ -4,79 +4,15 @@ description: 'haha, rsactftool cannot brrr now can it'
 
 # Signing
 
-## dp and dq?
+## How?
 
-$$d_p$$ and $$d_q$$ are often notation for a different way of decrypting RSA messages.
+If we want to verify the integrity of a message, that is, make sure the person actually wrote it, we can use signing to verify that they actually wrote it.
 
-$$
-d_p = d \mod (p-1)
-$$
+Say Alice wants to send a message to Bob. Bob wants Alice to sign her message so that he can make sure she wrote it. The process would look something like this:
 
-and
-
-$$
-d_q = d \mod (q-1)
-$$
-
-meaning that the message can be calculated by doing
-
-$$
-m_1 = c^{d_p} \mod p
-\newline m_2 = c^{d_q} \mod q
-\newline h = q_{inv}(m_1 - m_2) \mod p
-\newline m = m_2 + hq \mod n
-$$
-
-There is also a way to recover $$m$$ just given one of these. 
-
-Since:
-
-$$
-e * d_p \equiv 1 \mod p
-$$
-
-If we take any integer $$x$$, and multiply it by $$e * d_p$$, we get
-
-$$
-x  * e * d_p = x \mod p
-$$
-
-We can then subtract $$x$$ from both sides to get
-
-$$
-(x * e * d_p) - x = 0 \mod p
-$$
-
-meaning that $$(x * e * d_p) - x $$ is a multiple of $$p$$, and therefore meaning we can take the GCD of our modulus$$n $$ and $$(x * e * d_p) - x $$ to get our prime $$p$$.
-
-Implementation in Python
-
-```python
-from Crypto.Util.number import long_to_bytes
-from math import gcd
-
-n = [value]
-e = [value]
-c = [value]
-dp = [value]
-
-p = gcd((2*e*dp)-2,n)
-q = n//p
-tot = (p-1) * (q-1)
-d = pow(e,-1,tot)
-pt = pow(c,d,n)
-print(long_to_bytes(pt))
-```
-
-
-
-## Null byte padding
-
-Sometimes, people will use null bytes to pad their message before encrypting it. This can be broken if the exponent is small enough.
-
-```python
-
-```
-
-
-
+- Alice encrypts her message with Bob's **public** key.
+- She then takes the hash of her message (using an agreed on hashing algorithm), and encrypts it with her own **private key**.
+- She then sends the message along with the signature to Bob.
+- Bob then decrypts Alice's message with his **private** key.
+- Bob then encrypts the signature with Alice's **public** key.
+- He then hashes the decrypted message and compares it to the "encrypted" signature. If they match, it means that the signature is valid.
