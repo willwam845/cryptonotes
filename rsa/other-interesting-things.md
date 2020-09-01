@@ -29,7 +29,7 @@ m_1 = c^{d_p} \mod p
 \newline m = m_2 + hq \mod n
 $$
 
-There is also a way to recover $$m$$ just given one of these. 
+There is also a way to recover $$m$$ just given one of these.
 
 Since:
 
@@ -74,7 +74,7 @@ print(long_to_bytes(pt))
 
 ## Null byte padding
 
-Sometimes, people will use null bytes to pad their message before encrypting it. This can be broken if the exponent is small enough.
+A semi-common CTF challenge is that the person will use null bytes to pad their message before encrypting it. This can be broken if the exponent is small enough.
 
 Let's look at a certain example:
 
@@ -84,7 +84,7 @@ from secret import flag
 
 def pad(msg):
   return msg + (50-len(msg) * b"\x00")
-  
+
 n = [some value]
 e = 3
 
@@ -93,3 +93,23 @@ ct = pow(bytes_to_long(msg),e,n)
 print(ct)
 ```
 
+If we look closely, by adding a null byte to the end of our message, we are simply adding the binary bits of `00000000` to the end, which is the equivalent of multiplying our message by $$2^{8}$$, or 256.
+
+This means that we can express the encrypted message as:
+$$
+(m * 256^{(100 - len(message))})^{3}
+$$
+
+or simply
+
+$$
+m^{3} * 256^{(100 - len(message)) * 3}
+$$
+
+This means that we can work out $$m^{3}$$ quite easily.
+
+We simply divide (so multiply by the inverse) to get m^{3}.
+
+Then, we can simply attempt to bruteforce $$m$$, since $$m^{3} = kn + c$$, and so we can bruteforce values for k and then take a cube root.
+
+Implementation in python (soon:tm:)
