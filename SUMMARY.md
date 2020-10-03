@@ -10,4 +10,4 @@
   * [Other Interesting Things](rsa/other-interesting-things.md)
 * [Diffe-Hellman](diffe-hellman/README.md)
   * [Basics](diffe-hellman/basics.md)
-
+  * [Pohlig-Hellman](diffe-hellman/pohlig-hellman.md)
