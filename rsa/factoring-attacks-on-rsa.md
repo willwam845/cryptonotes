@@ -6,6 +6,8 @@ description: factordb go brrrr
 
 This is really just a dump of some factoring methods, not really any mathsy attacks being used.
 
+lightning mode time
+
 ### Low N
 
 If the modulus N is very low \(128 bits or below takes a couple of seconds\), then the modulus can be easily factorised to get primes p and q, and then get d
@@ -99,7 +101,7 @@ f = [int(x) for x in f]
 tot = prod(p-1 for p in f)
 d = pow(e, -1, tot)
 pt = pow(c,d,n)
-print(long_to_bytes(pt)) 
+print(long_to_bytes(pt))
 ```
 
 ### Root attack
@@ -140,7 +142,7 @@ def fermatfactor(n):
     p = a + isqrt(b2)
     q = a - isqrt(b2)
     return int(p), int(q)
-    
+
 p,q = fermatfactor(n)
 tot = (p-1) * (q-1)
 d = pow(e,-1,tot)
@@ -174,7 +176,7 @@ print(long_to_bytes(pt))
 
 ### ROCA
 
-It kinda just.. exists... 
+It kinda just.. exists...
 
 [https://keychest.net/roca](https://keychest.net/roca) to check if vulnerable, and
 
@@ -199,4 +201,3 @@ d = pow(e,-1,tot)
 pt = pow(c,d,n)
 print(long_to_bytes(pt))
 ```
-
