@@ -16,3 +16,5 @@
   * [Basics](ecc/basics.md)
   * [Pohlig-Hellman(again)](ecc/pohlig-hellman-again.md)
   * [ECDSA](ecc/ecdsa.md)
+* [Modular Maths](modular-maths/README.md)
+  * [Modular Square Root](modular-maths/quadres.md)
