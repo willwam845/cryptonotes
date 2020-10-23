@@ -12,7 +12,7 @@ But what happens if it isn't?
 
 ## Example
 
-Let's take the curve (in short Weisertrass form $$y^2 = x^3 + ax + b$$ over GF(p)) with parameters
+Let's take the curve (in short Weierstrass form $$y^2 = x^3 + ax + b$$ over GF(p)) with parameters
 
 p = 310717010502520989590157367261876774703
 a = 2
