@@ -6,7 +6,7 @@ description: god i hate curves
 
 ## Basics
 
-Elliptic curve cryptography, often abbreviated to ECC, is a type of cryptography involving elliptic curves. There are many types of curves ECC can be done on, but most commonly they are done on curves of the Weisetrass form, and more specifically, you will mostly see them in the Short Weisetrass form, which is
+Elliptic curve cryptography, often abbreviated to ECC, is a type of cryptography involving elliptic curves. There are many types of curves ECC can be done on, but most commonly they are done on curves of the Weierstrass form, and more specifically, you will mostly see them in the Short Weierstrass form, which is
 
 $$
 y^{2} = x^{3} + ax + b

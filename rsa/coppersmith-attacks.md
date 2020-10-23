@@ -14,7 +14,7 @@ The main idea behind it \(using the example of $$e = 3$$ and three messages\), i
 
 Let the encrypted messages be $$m_1, m_2 $$ and $$m_3$$ , and let the public keys be $$n_1,n_2, n_3$$. Let the common message be $$M$$.
 
-We know that $$m_i = M^{3} \mod n_i $$, and we have three of these. We can use the Chinese Remainder Theorem to work out $$M^{3} \mod n_1*n_2*n_3$$ 
+We know that $$m_i = M^{3} \mod n_i $$, and we have three of these. We can use the Chinese Remainder Theorem to work out $$M^{3} \mod n_1*n_2*n_3$$
 
 We can then simply take the integer root of $$M^{3} $$ in order to get $$M$$.
 
@@ -55,7 +55,7 @@ $$
 p_i(x) \equiv  (a_ix+b)^{3} - c_i
 $$
 
-Since we have two of these, and they both share a root of $$x$$, therefore they share a factor of $$x - M$$, and so we can compute the GCD of them to recover $$M$$ 
+Since we have two of these, and they both share a root of $$x$$, therefore they share a factor of $$x - M$$, and so we can compute the GCD of them to recover $$M$$
 
 Implementation in Sage:
 
@@ -80,11 +80,11 @@ result = -gcd(p1, p2).coefficients()[0]
 print(long_to_bytes(result))
 ```
 
-## **Variations**
+## Variations
 
 ### Linear Padding
 
-We can also use Hastads if the messages are only padded with a linear polynomial, as proven by Coppersmith. 
+We can also use Hastads if the messages are only padded with a linear polynomial, as proven by Coppersmith.
 
 Let's take an example where they are padded with $$m = aM + b$$, and $$a$$ and $$b$$ are both given to us. $$e = 3 $$ and we have 5 messages.
 
@@ -94,7 +94,7 @@ $$
 T_i \equiv 1 \mod n_i
 $$
 
-and 
+and
 
 
 
@@ -105,10 +105,10 @@ $$
 We then, for each $$T_i$$ , take the polynomial:
 
 $$
-g(x) = T_i * ((a_i * x + b_i)**5 - c
+g(x) = T_i * ((a_i * x + b_i)^{5} - c
 $$
 
-We then sum these polynomials, and note that for all $$n_i$$ ,  $$\sum g(x) \equiv 0 \mod n_i$$ 
+We then sum these polynomials, and note that for all $$n_i$$ ,  $$\sum g(x) \equiv 0 \mod n_i$$
 
 Finally, we just use Coppersmith's method to get $$M$$.
 
@@ -145,12 +145,12 @@ c2 = [value]
 PRxy.<x,y> = PolynomialRing(Zmod(n))
 PRx.<xn> = PolynomialRing(Zmod(n))
 PRZZ.<xz,yz> = PolynomialRing(Zmod(n))
- 
+
 g1 = x^e - c1
 g2 = (x + y)^e - c2
 q1 = g1.change_ring(PRZZ)
 q2 = g2.change_ring(PRZZ)
- 
+
 h = q2.resultant(q1)
 h = h.univariate_polynomial()
 h = h.change_ring(PRx).subs(y=xn)
@@ -176,4 +176,3 @@ p2 = (x + diff) ^ e - c2
 result = -gcd(p1, p2).coefficients()[0]
 print(long_to_bytes(result))
 ```
-
