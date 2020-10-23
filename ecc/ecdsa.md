@@ -33,3 +33,5 @@ We work out $$s$$ by
 $$
 s = k^{-1} * (m + rd) \mod n
 $$
+
+## To verify?

@@ -15,6 +15,7 @@
 * [ECC](ecc/README.md)
   * [Basics](ecc/basics.md)
   * [Pohlig-Hellman(again)](ecc/pohlig-hellman-again.md)
+  * [Smarts's Attack](ecc/smarts-attack.md)
   * [ECDSA](ecc/ecdsa.md)
 * [Modular Maths](modular-maths/README.md)
   * [Modular Square Root](modular-maths/quadres.md)
