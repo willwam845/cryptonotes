@@ -34,4 +34,6 @@ $$
 s = k^{-1} * (m + rd) \mod n
 $$
 
+The signature is then `(r,s)`, and is given.
+
 ## To verify?

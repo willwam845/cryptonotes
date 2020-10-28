@@ -17,6 +17,7 @@
   * [Pohlig-Hellman(again)](ecc/pohlig-hellman-again.md)
   * [Smarts's Attack](ecc/smarts-attack.md)
   * [ECDSA](ecc/ecdsa.md)
+  * [Nonces](ecc/nonces.md)
 * [Modular Maths](modular-maths/README.md)
   * [Modular Square Root](modular-maths/quadres.md)
   * [Chinese Remainder Theory](modular-maths/chinese-remainder-theorem.md)
