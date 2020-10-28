@@ -19,3 +19,4 @@
   * [ECDSA](ecc/ecdsa.md)
 * [Modular Maths](modular-maths/README.md)
   * [Modular Square Root](modular-maths/quadres.md)
+  * [Chinese Remainder Theory](modular-maths/chinese-remainder-theorem.md)
