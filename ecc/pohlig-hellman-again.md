@@ -14,9 +14,11 @@ But what happens if it isn't?
 
 Let's take the curve (in short Weierstrass form $$y^2 = x^3 + ax + b$$ over GF(p)) with parameters
 
+```
 p = 310717010502520989590157367261876774703
 a = 2
 b = 3
+```
 
 We will get our generator point and print the order of it, and also try to factor the order:
 
@@ -66,9 +68,11 @@ If a maximum value is known for the private key, and the order is not prime, it 
 
 Take the set of parameters
 
+```
 p = 292065371966288667389477330182200680503
 a = 2
 b = 3
+```
 
 First, we get our generator point and check its order, also checking if it factorizes:
 ```python
